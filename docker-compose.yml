@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  postfix:
+    image: ${IMAGE_NAME}
+    environment:
+      - POSTFIX_RELAY=${POSTFIX_RELAY}
+      - POSTFIX_HOSTNAME=${POSTFIX_HOSTNAME}
+      - POSTFIX_NETWORKS=${POSTFIX_NETWORKS}
+      - POSTFIX_SENDERS=${POSTFIX_SENDERS}
+    ports:
+      - "${POSTFIX_PORT:-2555}:25"
+    restart: on-failure
